@@ -8,7 +8,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = Prototype.new
+    @prototype = Prototype.new(prototype_params)
   end
 
   private
