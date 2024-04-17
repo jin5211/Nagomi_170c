@@ -1,27 +1,27 @@
 default: &default
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+ encoding: utf8
+ pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ username: root
+ password:
+ socket: /tmp/mysql.sock
 
 development:
-  <<: *default
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: Nagomi_170c_development
+ <<: *default
+ adapter: mysql2
+ username: root
+ password:
+ host: localhost
+ database: Nagomi_170c_development
 
 test:
-  <<: *
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: Nagomi_170c_test
+ <<: *default
+ adapter: mysql2
+ username: root
+ password:
+ host: localhost
+ database: Nagomi_170c_test
 
 production:
-  <<: *default
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+ <<: *default
+ adapter: postgresql
+ url: <%= ENV['DATABASE_URL'] %>
