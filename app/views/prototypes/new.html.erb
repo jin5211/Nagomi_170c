@@ -2,11 +2,7 @@
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">新規プロトタイプ投稿</h2>
-        <%= form_with(model: @prototype, local: true) do |form| %>
-        <%= form.text_field :text, placeholder: %>
-        <%= form.text_field :text, placeholder: %>
-        <%= form.text_area :text, placeholder: %>
-        <%= form.submit "保存する" %>
+        <%= render partial: "form", locals: { prototype: prototype } %>
     </div>
   </div>
 </div>
