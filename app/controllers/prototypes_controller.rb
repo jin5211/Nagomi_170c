@@ -10,7 +10,8 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     @prototype.valid?
-    @prototype.save
+    return unless @prototype.save
+
     redirect_to '/'
   end
 
