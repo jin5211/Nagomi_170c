@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_110038) do
   end
 
   create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_110038) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
   create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
@@ -59,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_110038) do
     t.index ["user_id"], name: "index_prototypes_on_user_id"
   end
 
+  create_table "users", charset: "utf8", force: :cascade do |t|
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.text "name", null: false
     t.text "profile", null: false

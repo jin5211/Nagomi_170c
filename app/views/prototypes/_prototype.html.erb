@@ -1,10 +1,10 @@
 <div class="card">
-  <%= link_to image_tag(prototype.image, class: :card__img ), root_path%>
+  <%= link_to image_tag(prototype.image, class: :card__img ), prototype_path(prototype.id)%>
   <div class="card__body">
     <%= link_to prototype.title, root_path, class: :card__title%>
     <p class="card__summary">
-      <%= prototype.catch_copy %>
+      <%= prototype.concept %>
     </p>
-    <%= link_to "by プロトタイプの投稿者名", root_path, class: :card__user %>
+    <%= link_to "by#{prototype.user.name}", user_path(prototype.user), class: :card__user %>
   </div>
 </div>
