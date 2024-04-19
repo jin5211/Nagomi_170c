@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_102649) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_110038) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_102649) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
+  create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
   create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
@@ -34,9 +35,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_102649) do
   end
 
   create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "comments", charset: "utf8", force: :cascade do |t|
+    t.string "content", null: false
+    t.bigint "prototype_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["prototype_id"], name: "index_comments_on_prototype_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "prototypes", charset: "utf8", force: :cascade do |t|
@@ -49,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_102649) do
     t.index ["user_id"], name: "index_prototypes_on_user_id"
   end
 
+  create_table "users", charset: "utf8", force: :cascade do |t|
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.text "name", null: false
     t.text "profile", null: false
@@ -67,5 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_102649) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "prototypes", "users"
 end
