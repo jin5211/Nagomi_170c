@@ -41,6 +41,5 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
-    params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
 end
