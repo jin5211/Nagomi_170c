@@ -16,11 +16,6 @@ class PrototypesController < ApplicationController
     redirect_to ‘ / ’
   end
 
-  def show
-    @comment = Comment.new
-    @comments = @prototype.comments
-  end
-
   def update
     return unless @prototype.update(prototype_params)
 
