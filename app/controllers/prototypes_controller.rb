@@ -13,9 +13,11 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     @prototype.valid?
-    return unless @prototype.save
-
-    redirect_to '/'
+    if @prototype.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -24,9 +26,11 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    return unless @prototype.update(prototype_params)
-
-    redirect_to root_path
+    if @prototype.update(prototype_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
