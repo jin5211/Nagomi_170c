@@ -13,7 +13,7 @@ class PrototypesController < ApplicationController
     @prototype.valid?
     return unless @prototype.save
 
-    redirect_to ‘ / ’
+    redirect_to '/'
   end
 
   def update
