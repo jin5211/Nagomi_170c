@@ -18,6 +18,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @comments = @prototype.comments
   end
 
@@ -41,9 +42,5 @@ class PrototypesController < ApplicationController
   def set_prototype
     @prototype = Prototype.find(params[:id])
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
-  end
-
-  def set_prototype
-    @prototype = Prototype.find(params[:id])
   end
 end
