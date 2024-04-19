@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+
   def index
     @prototypes = Prototype.all
   end
@@ -14,6 +15,22 @@ class PrototypesController < ApplicationController
     return unless @prototype.save
 
     redirect_to '/'
+  end
+
+  def show
+    @comment = Comment.new
+    @comments = @prototype.comments
+  end
+
+  def update
+    return unless @prototype.update(prototype_params)
+
+    redirect_to root_path
+  end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path
   end
 
   private
