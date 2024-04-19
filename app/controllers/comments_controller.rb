@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    return unless create(comment_params)
+    return unless Comment.create(comment_params)
 
     redirect_to prototype_path(prototype_id)
   end
