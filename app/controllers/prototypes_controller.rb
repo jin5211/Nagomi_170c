@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :authenticate_prototype!, only: [:edit, :update, :destroy]
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.includes(:user)
   end
 
   def new
@@ -27,7 +27,7 @@ class PrototypesController < ApplicationController
 
   def update
     if @prototype.update(prototype_params)
-      redirect_to root_path
+      redirect_to prototype_path(@prototype)
     else
       render :edit, status: :unprocessable_entity
     end
